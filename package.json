@@ -1,0 +1,36 @@
+{
+	"dependencies": {
+		"discord-command-parser": "^1.5.3",
+		"discord.js": "^13.6.0",
+		"typescript": "^4.5.5"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.10.1",
+		"@typescript-eslint/parser": "^5.10.1",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.7.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^4.0.0",
+		"nodemon": "^2.0.15",
+		"prettier": "^2.5.1",
+		"ts-node": "^10.4.0"
+	},
+	"name": "bot",
+	"version": "1.0.0",
+	"main": "bot.js",
+	"scripts": {
+		"start:dev": "nodemon",
+		"start:prod": "npm run build && cross-env NODE_ENV=production node build/bot.js",
+		"build": "rimraf ./build && tsc",
+		"start": "npm run serve",
+		"serve": "cross-env NODE_ENV=production node build/bot.js",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"pm2": "npm run build && pm2 start npm --name bot -- start",
+		"pm2:restart": "npm run build && pm2 restart bot"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": ""
+}
