@@ -1,8 +1,10 @@
 import { Client, Collection, ClientOptions } from 'discord.js';
+import { defaultPrefix } from '../config/config.json';
 import { Command } from '../interfaces/command';
 import { Event } from '../interfaces/event';
 import fs from 'fs';
 import path from 'path';
+import { serverSettings } from '../interfaces/serverSettings';
 
 let filesExtension = '.js';
 if (process.env.NODE_ENV !== 'production') filesExtension = '.ts';
@@ -10,6 +12,8 @@ if (process.env.NODE_ENV !== 'production') filesExtension = '.ts';
 class BotClient extends Client {
 	public commands: Collection<string, Command> = new Collection();
 	public events: Collection<string, Event> = new Collection();
+	public serverSettings: Collection<string, serverSettings> = new Collection();
+	public defaultPrefix: string = defaultPrefix;
 
 	constructor(options: ClientOptions) {
 		super(options);
@@ -57,6 +61,8 @@ export default new BotClient({
 		'GUILD_MESSAGES',
 		'GUILD_MESSAGE_REACTIONS',
 		'DIRECT_MESSAGES',
-		'DIRECT_MESSAGE_REACTIONS',
-	],
+		'DIRECT_MESSAGE_REACTIONS'
+	]
 });
+
+export type BClient = BotClient;

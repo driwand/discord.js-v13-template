@@ -1,6 +1,11 @@
 import client from './client/client';
 import { botToken } from './config/config.json';
+import connectDb from './db';
 
-client.init();
+const main = async () => {
+	await client.init();
+	await client.login(botToken);
+	await connectDb();
+};
 
-client.login(botToken);
+main();

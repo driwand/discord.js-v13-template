@@ -1,5 +1,6 @@
 {
-	"ownerId": "",
+	"ownersId": [ ],
 	"botToken": "",
-	"defaultPrefix": ""
+	"defaultPrefix": "",
+	"embedColor": 3447003
 }

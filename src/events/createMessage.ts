@@ -1,14 +1,14 @@
 import { Event } from '../interfaces/event';
 import { Message } from 'discord.js';
-import { defaultPrefix } from '../config/config.json';
 import { parse } from 'discord-command-parser';
 
 export const event: Event = {
 	name: 'messageCreate',
 	execute: async (client, msg: Message) => {
-		if (msg.author.bot || !msg.content.startsWith(defaultPrefix)) return;
+		if (msg.author.bot || !msg.guildId) return;
 
-		const parsed = parse(msg, defaultPrefix, { ignorePrefixCase: true });
+		const prefix = client.serverSettings.get(msg.guildId)?.prefix ?? client.defaultPrefix;
+		const parsed = parse(msg, prefix, { ignorePrefixCase: true });
 		if (!parsed.success) return;
 
 		const commandName = parsed.command.toLowerCase();
@@ -23,5 +23,5 @@ export const event: Event = {
 			msg.reply('there was an error trying to execute that command.');
 			console.error(error);
 		}
-	},
+	}
 };

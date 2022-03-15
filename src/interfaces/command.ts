@@ -7,10 +7,7 @@ export interface Command {
 	description: string;
 	usage?: string;
 	aliases?: string[];
+	category?: string;
 
-	execute: (
-		client: typeof Client,
-		message: Message,
-		args: ParsedMessage<Message> | null
-	) => Promise<any>;
+	execute: (client: typeof Client, message: Message, args: ParsedMessage<Message> | null) => Promise<any>;
 }

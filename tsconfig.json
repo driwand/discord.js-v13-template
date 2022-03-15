@@ -6,6 +6,9 @@
 		"outDir": "build",
 		"sourceMap": true,
 		"resolveJsonModule": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"strictPropertyInitialization": false,
 		"lib": [
 			"es6",
 			"dom"
