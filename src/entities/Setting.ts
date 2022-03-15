@@ -9,6 +9,6 @@ export class Setting extends BaseEntity {
 	@Column({ default: defaultPrefix })
 	prefix: string;
 
-	@Column({ nullable: true })
-	managerRoleId: string;
+	@Column({ nullable: true, type: 'varchar' })
+	managerRoleId: string | null;
 }

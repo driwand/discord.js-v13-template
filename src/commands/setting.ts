@@ -72,7 +72,7 @@ const setManager = async (client: BClient, msg: Message, args: ParsedMessage<Mes
 			if (option !== 'none') return sendUsage(client, msg, '{prefix}setting manager @role/none');
 			option = null;
 		}
-		await getRepository(Setting).save({ serverId: msg.guildId, managerRole: option });
+		await getRepository(Setting).save({ serverId: msg.guildId, managerRoleId: option });
 		const serverSet = client.serverSettings.get(msg.guildId);
 		if (serverSet) {
 			serverSet.managerRole = option;
