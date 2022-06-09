@@ -2,7 +2,7 @@ import { createConnection } from 'typeorm';
 import { Setting } from './entities/Setting';
 import { path } from 'app-root-path';
 
-const dbDirectory = `${path}/src/data`;
+const dbDirectory = `${path}/data`;
 
 const connectDb = async () => {
 	try {

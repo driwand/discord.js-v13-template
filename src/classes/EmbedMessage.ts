@@ -1,5 +1,5 @@
 import { MessageEmbed } from 'discord.js';
-import { embedColor } from '../config/config.json';
+import { embedColor } from '../config/config';
 
 class EmbedMessage extends MessageEmbed {
 	constructor() {

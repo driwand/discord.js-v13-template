@@ -105,5 +105,4 @@ dist
 
 build/
 
-src/data/*
-src/config/config.json
+data/

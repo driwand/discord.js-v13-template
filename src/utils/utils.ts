@@ -1,13 +1,13 @@
-import { Message } from 'discord.js';
+import { GuildMember, Message } from 'discord.js';
 import EmbedMessage from '../classes/EmbedMessage';
 import { BClient } from '../client/client';
-import { ownersId } from '../config/config.json';
+import { ownerIds } from '../config/config';
 
-const isAdmin = (client: BClient, msg: Message): boolean => {
-	if (!msg.guildId || !msg.member) return false;
-	const serverSettings = client.serverSettings.get(msg.guildId);
-	if (serverSettings && serverSettings.managerRole) return msg.member?.roles.cache.has(serverSettings.managerRole);
-	return ownersId.includes(msg.author.id) || msg.member?.permissions.has(['ADMINISTRATOR']);
+const isAdmin = (client: BClient, member: GuildMember, guildId: string) => {
+	const managerRole = client.serverSettings.get(guildId)?.managerRole ?? '';
+	return (
+		ownerIds.includes(member.id) || member.permissions.has(['ADMINISTRATOR']) || member.roles.cache.has(managerRole)
+	);
 };
 
 const sendUsage = async (client: BClient, msg: Message, usage: string) => {
@@ -24,4 +24,4 @@ const replaceAllOccurrence = (str: string, search: string, replace: string): str
 	return str.split(search).join(replace);
 };
 
-export { isAdmin, sendUsage };
+export { isAdmin, sendUsage, replaceAllOccurrence };

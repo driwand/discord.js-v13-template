@@ -1,17 +1,18 @@
-import { ParsedMessage } from 'discord-command-parser';
-import { Message } from 'discord.js';
-import { getRepository } from 'typeorm';
-import EmbedMessage from '../classes/EmbedMessage';
-import { BClient } from '../client/client';
-import { Setting } from '../entities/Setting';
-import { Command } from '../interfaces/command';
 import { serverSettings } from '../interfaces/serverSettings';
+import { ParsedMessage } from 'discord-command-parser';
+import EmbedMessage from '../classes/EmbedMessage';
+import { Command } from '../interfaces/command';
+import { Setting } from '../entities/Setting';
+import { BClient } from '../client/client';
 import { sendUsage } from '../utils/utils';
+import { getRepository } from 'typeorm';
+import { Message } from 'discord.js';
 
 export const command: Command = {
 	name: 'setting',
 	description: 'Bot settings',
 	aliases: ['settings', 'set'],
+	category: 'admin',
 
 	async execute(client, msg, args) {
 		if (!args?.success) return;

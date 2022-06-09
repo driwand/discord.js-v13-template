@@ -1,5 +1,5 @@
 import { PrimaryColumn, Entity, Column, BaseEntity } from 'typeorm';
-import { defaultPrefix } from '../config/config.json';
+import { defaultPrefix } from '../config/config';
 
 @Entity()
 export class Setting extends BaseEntity {

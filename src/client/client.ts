@@ -1,5 +1,5 @@
 import { Client, Collection, ClientOptions } from 'discord.js';
-import { defaultPrefix } from '../config/config.json';
+import { defaultPrefix } from '../config/config';
 import { Command } from '../interfaces/command';
 import { Event } from '../interfaces/event';
 import fs from 'fs';
